@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VideoAdActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:background="@drawable/upper_dark"
+            android:text="You data of Banner ads as per today!\n:)"
+            android:gravity="end|center_vertical"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:padding="16dp"/>
+
+
+        <LinearLayout
+            android:layout_marginTop="64dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textStyle="bold"
+                android:text="Ads Clicked"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:gravity="center_horizontal|end"
+                android:textColor="#D26200EE"/>
+
+            <TextView
+                android:id="@+id/ads_clicked_video"
+                android:inputType="textPersonName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@drawable/field_entry"
+                android:padding="16dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textStyle="bold"
+                android:text="Ads Left to Click"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:gravity="center_horizontal|end"
+                android:textColor="#D26200EE"/>
+
+            <TextView
+                android:id="@+id/ads_click_left_video"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@drawable/field_entry"
+                android:padding="16dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
+
+<!--    ca-app-pub-7862696162151523/8344535205-->
+
+</RelativeLayout>

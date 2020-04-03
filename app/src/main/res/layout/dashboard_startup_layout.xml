@@ -3,18 +3,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="#651FFF">-->
+
+<!--        -->
+
+<!--    </androidx.appcompat.widget.Toolbar>-->
+
+
+
+    <FrameLayout
+        android:id="@+id/dashboard_frames_frag"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#651FFF">
+        android:layout_height="match_parent"/>
 
-    </androidx.appcompat.widget.Toolbar>
-
-    <Button
-        android:id="@+id/open_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="OPEN DRAWER!"/>
+    <ImageView
+        android:id="@+id/drawer_controller"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:padding="16sp"
+        android:src="@drawable/newmenu"/>
 
 </RelativeLayout>

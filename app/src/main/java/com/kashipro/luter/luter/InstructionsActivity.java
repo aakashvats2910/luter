@@ -54,6 +54,7 @@ public class InstructionsActivity extends AppCompatActivity {
                 }
 
                 if (INSTRUCTION > 2) {
+                    INSTRUCTION = 2;
                     // TODO start next activity!
                 }
 

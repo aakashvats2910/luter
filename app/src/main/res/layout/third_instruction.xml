@@ -3,20 +3,34 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#354CCD">
+    android:background="#FFFFFF">
+
+    <TextView
+        android:textSize="32sp"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:text="Play Game Now!"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:background="@drawable/upper_three"/>
 
     <ImageView
         android:id="@+id/money_img"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
         android:layout_alignParentTop="true"
-        android:src="@drawable/podium"
-        android:layout_margin="16dp"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="224dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginRight="93dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/podium" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#202979FF"/>
+        android:background="#202979FF" />
 
     <TextView
         android:layout_width="match_parent"

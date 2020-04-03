@@ -2,27 +2,36 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5567CC">
+    android:background="#FFFFFF">
+
+    <TextView
+        android:text="App Logic:"
+        android:textColor="#FFFFFF"
+        android:layout_width="match_parent"
+        android:gravity="end|center_vertical"
+        android:textSize="30sp"
+        android:paddingEnd="32dp"
+        android:layout_height="210dp"
+        android:background="@drawable/upper_dark"/>
 
     <ImageView
+        android:cropToPadding="true"
         android:id="@+id/money_img"
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:src="@drawable/rupee"
-        android:layout_margin="16dp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#202979FF"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
 
     <TextView
         android:layout_width="match_parent"
+        android:padding="32dp"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal|center_vertical"
+        android:gravity="center_vertical"
         android:textColor="#000000"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:layout_below="@id/money_img"
         android:text="@string/app_logic"/>
 

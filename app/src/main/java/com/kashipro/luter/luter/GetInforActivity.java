@@ -45,9 +45,8 @@ public class GetInforActivity extends AppCompatActivity {
                     name_field.setError("Max 20 characters allowed!");
                 } else {
                     Toast.makeText(getApplicationContext(), "Nice Work! Logging you in!",Toast.LENGTH_LONG).show();
-                    setNameInDB(name);
+                    setNameInDB(name); // It will automatically intent to next required activity.
                     getPhoneNumber();
-                    startActivity(new Intent(GetInforActivity.this, InstructionsActivity.class));
                 }
             }
         });
@@ -73,7 +72,9 @@ public class GetInforActivity extends AppCompatActivity {
     // Take phone number and store it in Shared preferences as well as use the helper method
     // uploadPhoneNumberToDB to upload it to the database.
     private void getPhoneNumber() {
+        if (LocalVariables.getResponse() == null) return;
         String number = LocalVariables.getResponse().getPhoneNumber();
+        if (number == null) return;
         LocalVariables.setDefaults("number", number, getApplicationContext());
         uploadPhoneNumberToDB(number);
     }

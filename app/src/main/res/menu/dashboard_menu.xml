@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/menu_top">
+        <item
+            android:id="@+id/phone_number_item"
+            android:title="Phone Number"/>
+        <item
+            android:id="@+id/money_earned_item"
+            android:title="Money Earned"/>
+        <item
+            android:id="@+id/refferal_code_item"
+            android:title="Refferal Code!"/>
+    </group>
+
+    <group android:checkableBehavior="none"
+        android:id="@+id/menu_bottom">
+        <item
+            android:id="@+id/log_out_item"
+            android:title="Log Out"/>
+    </group>
+
+</menu>

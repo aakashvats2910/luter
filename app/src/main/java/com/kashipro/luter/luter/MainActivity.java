@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         main_activity_main = findViewById(R.id.main_activity_main);
 
         if (FirebaseAuth.getInstance().getUid() != null) {
-            startActivity(new Intent(MainActivity.this, GetInforActivity.class));
+            startActivity(new Intent(MainActivity.this, DashboardActivity.class));
         } else {
             startActivityForResult(
                     AuthUI.getInstance()

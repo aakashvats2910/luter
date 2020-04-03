@@ -13,6 +13,8 @@ import com.kashipro.luter.luter.fragments.FirstInstruction;
 import com.kashipro.luter.luter.fragments.SecondInstruction;
 import com.kashipro.luter.luter.fragments.ThirdInstruction;
 
+import java.util.Date;
+
 public class InstructionsActivity extends AppCompatActivity {
 
     private int INSTRUCTION = 0;
@@ -55,6 +57,7 @@ public class InstructionsActivity extends AppCompatActivity {
 
                 if (INSTRUCTION > 2) {
                     INSTRUCTION = 2;
+                    startActivity(new Intent(InstructionsActivity.this, DashboardActivity.class));
                     // TODO start next activity!
                 }
 
@@ -66,6 +69,7 @@ public class InstructionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 INSTRUCTION--;
+                if (INSTRUCTION < 0) INSTRUCTION = 0;
                 switch (INSTRUCTION) {
                     case 0:
                         selectedFragment = new FirstInstruction();
@@ -78,11 +82,8 @@ public class InstructionsActivity extends AppCompatActivity {
                         break;
                     default:
                         ;// TODO pass onto next activity.;
-                        System.out.println("DONE!");
-                        break;
+                        finishAffinity();
                 }
-
-                if (INSTRUCTION < 0) INSTRUCTION = 0;
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.instructions_frame, selectedFragment).commit();
             }

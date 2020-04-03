@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "19745138700",
+    "firebase_url": "https://luter-79be2.firebaseio.com",
+    "project_id": "luter-79be2",
+    "storage_bucket": "luter-79be2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19745138700:android:1047ec25269305b82da629",
+        "android_client_info": {
+          "package_name": "com.kashipro.luter.luter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19745138700-uc8hkcs6fftv5d8b4gic0fv8eaa6kob5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kashipro.luter.luter",
+            "certificate_hash": "7f5357c430cf7584aa27ecd8e762715b212acccb"
+          }
+        },
+        {
+          "client_id": "19745138700-r41bjd7pvugleudp8khfuo1en0h0bstv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJZMSFadfnQHq4Oi9UuLRq3G_i_ywWI0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19745138700-r41bjd7pvugleudp8khfuo1en0h0bstv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

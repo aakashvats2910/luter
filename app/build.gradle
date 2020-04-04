@@ -52,6 +52,9 @@ dependencies {
     // Ad dependencies
     implementation 'com.google.android.gms:play-services-ads:19.0.1'
 
+    // Circular progress bar
+    implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

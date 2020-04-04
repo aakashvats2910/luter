@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.kashipro.luter.luter.dashboard_fragments.AdsFragment;
+import com.kashipro.luter.luter.dashboard_fragments.MoneyFragment;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -26,6 +27,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private DrawerLayout dashboard_drawer_layout;
     private NavigationView navigationView;
     private ImageView drawer_controller;
+    private NavigationView nav_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         setContentView(R.layout.activity_dashboard);
         setNavigationViewListener();
 
+        nav_view = findViewById(R.id.nav_view);
         dashboard_drawer_layout = findViewById(R.id.dashboard_drawer_layout);
         drawer_controller = findViewById(R.id.drawer_controller);
         navigationView = findViewById(R.id.nav_view);
@@ -45,6 +48,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 dashboard_drawer_layout.openDrawer(GravityCompat.START);
             }
         });
+
+        // Selected first item by default
+        nav_view.getMenu().getItem(0).setChecked(true);
 
     }
 
@@ -59,8 +65,12 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         switch (item.getItemId()) {
 
             case R.id.ads_item: {
-                Toast.makeText(getApplicationContext(), "Ads! Clicked!", Toast.LENGTH_LONG).show();
-                System.out.println("()()()() CLICKED");
+                getSupportFragmentManager().beginTransaction().replace(R.id.dashboard_frames_frag, new AdsFragment()).commit();
+                break;
+            }
+
+            case R.id.money_earned_item: {
+                getSupportFragmentManager().beginTransaction().replace(R.id.dashboard_frames_frag, new MoneyFragment()).commit();
                 break;
             }
 

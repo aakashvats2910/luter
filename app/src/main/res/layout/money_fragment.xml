@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:src="@drawable/moneyimage2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-260dp"
+        android:layout_marginBottom="-30dp"/>
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/circularProgressBar"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_centerInParent="true"
+        app:cpb_background_progressbar_color="#b6bbd8"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="#3f51b5"
+        app:cpb_progressbar_width="10dp"
+        app:cpb_round_border="true"
+        app:cpb_progress_max="100"
+        app:cpb_progress="76"/>
+
+    <TextView
+        android:id="@+id/money_percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="76%"
+        android:textSize="32dp"/>
+
+    <LinearLayout
+        android:layout_marginTop="160dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="Wallet"
+            android:textSize="20sp"
+            android:padding="16dp"
+            android:gravity="center_horizontal"
+            android:textColor="#D26200EE"/>
+
+        <TextView
+            android:id="@+id/wallet_field"
+            android:inputType="textPersonName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@drawable/field_entry"
+            android:padding="16dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/upper_dark"
+        android:gravity="end"
+        android:text="My Money"
+        android:textSize="22sp"
+        android:textColor="#ffffff"
+        android:padding="32dp"
+        android:paddingEnd="60dp"/>
+
+</RelativeLayout>

@@ -9,6 +9,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.kashipro.luter.luter.dashboard_fragments.AdsFragment;
 import com.kashipro.luter.luter.dashboard_fragments.MoneyFragment;
 
@@ -74,9 +76,25 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 break;
             }
 
+            case R.id.log_out_item: {
+                logOutAndClearStack();
+            }
+
         }
         //close navigation drawer
         dashboard_drawer_layout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logOutAndClearStack() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(DashboardActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
     }
 }

@@ -187,7 +187,7 @@ public class GameActivity extends AppCompatActivity implements NavigationView.On
     public void initializeOptions(String option, final View view) {
         Map<String, Object> map = new HashMap<>();
         map.put("SELECTED_OPTION", option);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("options").document(FirebaseAuth.getInstance().getUid())
                 .set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -198,8 +198,7 @@ public class GameActivity extends AppCompatActivity implements NavigationView.On
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                stopLoading();
-                Snackbar.make(view, "The selection can not be changed!", 3000).show();
+                Snackbar.make(view, "Selected options can not be changed!", 2000).show();
             }
         });
     }

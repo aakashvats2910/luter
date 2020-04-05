@@ -8,7 +8,6 @@ import com.firebase.ui.auth.IdpResponse;
 
 public class LocalVariables {
 
-
     public static void setDefaults(String key, String value, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();

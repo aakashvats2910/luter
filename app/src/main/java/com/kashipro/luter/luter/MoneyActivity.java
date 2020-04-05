@@ -59,9 +59,10 @@ public class MoneyActivity extends AppCompatActivity implements NavigationView.O
         circularProgressBar = findViewById(R.id.circularProgressBar);
         money_percentage = findViewById(R.id.money_percentage);
 
-        initializeWallet(wallet_field);
+        circularProgressBar.setProgressMax(200);
+        circularProgressBar.setIndeterminateMode(true);
 
-        // Business logic of the activity
+        initializeWallet(wallet_field);
     }
 
     private void setNavigationViewListener() {
@@ -111,30 +112,7 @@ public class MoneyActivity extends AppCompatActivity implements NavigationView.O
         finishAffinity();
     }
 
-    private void showProgressSlowly(final long value) {
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    TimeUnit.MILLISECONDS.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                long current = 0;
-                while (current <= value) {
-                    circularProgressBar.setProgress(current);
-                    current++;
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(12);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }.start();
-    }
-
-    public static void initializeWallet(final TextView textView) {
+    public void initializeWallet(final TextView textView) {
         final String HERE = "WALLET";
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("money").document(FirebaseAuth.getInstance().getUid())
@@ -145,10 +123,15 @@ public class MoneyActivity extends AppCompatActivity implements NavigationView.O
                     DocumentSnapshot snapshot = task.getResult();
                     if (snapshot.exists()) {
                         if (snapshot.contains(HERE)) {
-                            long clicked = (long) snapshot.get(HERE);
-                            textView.setText("" + clicked + " \u20B9");
+                            long money = (long) snapshot.get(HERE);
+                            textView.setText("" + money + " \u20B9");
+                            circularProgressBar.setIndeterminateMode(false);
+                            circularProgressBar.setProgressWithAnimation(money, 1000L);
+                            money_percentage.setText("" + (money/2));
                         } else {
                             textView.setText("0 \u20B9");
+                            circularProgressBar.setIndeterminateMode(false);
+                            circularProgressBar.setProgressWithAnimation(0, 1000L);
                         }
                     }
                 }

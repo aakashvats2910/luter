@@ -21,7 +21,12 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.kashipro.luter.luter.dashboard_fragments.AdsFragment;
+import com.kashipro.luter.luter.dashboard_fragments.GameFragment;
 import com.kashipro.luter.luter.dashboard_fragments.MoneyFragment;
+import com.kashipro.luter.luter.local.LocalVariables;
+import com.mikhaellopez.circularprogressbar.CircularProgressBar;
+
+import java.util.concurrent.TimeUnit;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -73,6 +78,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
             case R.id.money_earned_item: {
                 getSupportFragmentManager().beginTransaction().replace(R.id.dashboard_frames_frag, new MoneyFragment()).commit();
+                break;
+            }
+
+            case R.id.game_item: {
+                getSupportFragmentManager().beginTransaction().replace(R.id.dashboard_frames_frag, new GameFragment()).commit();
                 break;
             }
 

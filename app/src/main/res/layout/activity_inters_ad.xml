@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="210dp"
             android:background="@drawable/upper_dark"
-            android:text="You data of Inters ads as per today!\n:)"
+            android:text="You data of Inters ads this week!\n:)"
             android:gravity="end|center_vertical"
             android:textSize="22sp"
             android:textColor="#ffffff"
@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="4"
                 android:textStyle="bold"
                 android:text="Ads Viewed"
                 android:textSize="16sp"
@@ -40,9 +40,11 @@
                 android:textColor="#D26200EE"/>
 
             <TextView
-                android:id="@+id/ads_viewed_video"
+                android:id="@+id/ads_viewed_inters"
+                android:text="0"
                 android:inputType="textPersonName"
                 android:layout_width="0dp"
+                android:paddingStart="32dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:background="@drawable/field_entry"
@@ -61,7 +63,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="4"
                 android:textStyle="bold"
                 android:text="Ads Clicked"
                 android:textSize="16sp"
@@ -70,11 +72,13 @@
                 android:textColor="#D26200EE"/>
 
             <TextView
-                android:id="@+id/ads_clicked_video"
+                android:id="@+id/ads_clicked_inters"
                 android:inputType="textPersonName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
+                android:text="0"
+                android:paddingStart="32dp"
                 android:background="@drawable/field_entry"
                 android:padding="16dp"
                 android:textStyle="bold"
@@ -86,69 +90,42 @@
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:textStyle="bold"
-                android:text="Ads Left to View"
-                android:textSize="16sp"
-                android:padding="16dp"
-                android:gravity="center_horizontal|end"
-                android:textColor="#D26200EE"/>
-
-            <TextView
-                android:id="@+id/ads_view_left_video"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:background="@drawable/field_entry"
-                android:padding="16dp"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"/>
-
-        </LinearLayout>
+            android:orientation="horizontal"/>
 
         <LinearLayout
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:textStyle="bold"
-                android:text="Ads Left to Click"
-                android:textSize="16sp"
-                android:padding="16dp"
-                android:gravity="center_horizontal|end"
-                android:textColor="#D26200EE"/>
-
-            <TextView
-                android:id="@+id/ads_click_left_video"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:background="@drawable/field_entry"
-                android:padding="16dp"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"/>
-
-        </LinearLayout>
+            android:orientation="horizontal"/>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/button_test"
+        android:id="@+id/watch_image_ad_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="testing"
+        android:text="Watch AD"
+        android:enabled="false"
+        android:backgroundTint="#3D5AFE"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="32dp"/>
+
+    <TextView
+        android:id="@+id/info_view_inters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:text=""/>
+
+    <ImageView
+        android:id="@+id/back_inters"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:padding="16sp"
+        android:src="@drawable/backnew"/>
 
 </RelativeLayout>

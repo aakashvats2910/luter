@@ -8,7 +8,6 @@ import com.firebase.ui.auth.IdpResponse;
 
 public class LocalVariables {
 
-    private static IdpResponse response;
 
     public static void setDefaults(String key, String value, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -22,11 +21,4 @@ public class LocalVariables {
         return preferences.getString(key, null);
     }
 
-    public static void setResponse(IdpResponse response) {
-        LocalVariables.response = response;
-    }
-
-    public static IdpResponse getResponse() {
-        return response;
-    }
 }

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="210dp"
             android:background="@drawable/upper_dark"
-            android:text="You data of Banner ads as per today!\n:)"
+            android:text="You data of Banner ads this week!\n:)"
             android:gravity="end|center_vertical"
             android:textSize="22sp"
             android:textColor="#ffffff"
@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="4"
                 android:textStyle="bold"
                 android:text="Ads Clicked"
                 android:textSize="16sp"
@@ -41,7 +41,7 @@
                 android:textColor="#D26200EE"/>
 
             <TextView
-                android:id="@+id/ads_clicked_video"
+                android:id="@+id/ads_clicked_banner"
                 android:inputType="textPersonName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -57,30 +57,7 @@
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:textStyle="bold"
-                android:text="Ads Left to Click"
-                android:textSize="16sp"
-                android:padding="16dp"
-                android:gravity="center_horizontal|end"
-                android:textColor="#D26200EE"/>
-
-            <TextView
-                android:id="@+id/ads_click_left_video"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:background="@drawable/field_entry"
-                android:padding="16dp"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"/>
-
-        </LinearLayout>
+            android:orientation="horizontal"/>
 
     </LinearLayout>
 
@@ -96,5 +73,12 @@
     </com.google.android.gms.ads.AdView>
 
 <!--    ca-app-pub-7862696162151523/8344535205-->
+
+    <ImageView
+        android:id="@+id/back_banner"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:padding="16sp"
+        android:src="@drawable/backnew"/>
 
 </RelativeLayout>

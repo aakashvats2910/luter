@@ -1,5 +1,6 @@
 package com.kashipro.luter.luter;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdListener;
@@ -8,13 +9,28 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+import com.kashipro.luter.luter.util.UpdateDB;
 
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class BannerAdActivity extends AppCompatActivity {
 
     private AdView mAdView;
+    private TextView ads_clicked_banner;
+    private ImageView back_banner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +42,21 @@ public class BannerAdActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+
+        back_banner = findViewById(R.id.back_banner);
+        ads_clicked_banner = findViewById(R.id.ads_clicked_banner);
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        UpdateDB.initializeClicksFromDB("BANNER_CLICK", ads_clicked_banner);
+
+        back_banner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mAdView.setAdListener(new AdListener() {
             @Override
@@ -50,11 +78,14 @@ public class BannerAdActivity extends AppCompatActivity {
             @Override
             public void onAdClicked() {
                 // Code to be executed when the user clicks on an ad.
+
             }
 
             @Override
             public void onAdLeftApplication() {
                 // Code to be executed when the user has left the app.
+                UpdateDB.updateDB("BANNER_CLICK", ads_clicked_banner);
+
             }
 
             @Override

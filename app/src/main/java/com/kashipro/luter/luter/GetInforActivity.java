@@ -86,7 +86,6 @@ public class GetInforActivity extends AppCompatActivity {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 LocalVariables.setDefaults("number",user.getPhoneNumber(), getApplicationContext());
-                LocalVariables.setResponse(response);
                 startActivity(new Intent(GetInforActivity.this, InstructionsActivity.class));
             } else {
                 // Unsuccessful sign in

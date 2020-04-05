@@ -9,6 +9,9 @@
         <item
             android:id="@+id/money_earned_item"
             android:title="Money Earned"/>
+        <item
+            android:id="@+id/game_item"
+            android:title="Play Game"/>
     </group>
 
     <group android:checkableBehavior="none"

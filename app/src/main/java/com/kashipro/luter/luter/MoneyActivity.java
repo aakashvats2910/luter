@@ -79,6 +79,7 @@ public class MoneyActivity extends AppCompatActivity implements NavigationView.O
                 Intent i = new Intent(MoneyActivity.this, AdsActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
+                overridePendingTransition(R.anim.goup, R.anim.godown);
                 break;
             }
 
@@ -86,11 +87,13 @@ public class MoneyActivity extends AppCompatActivity implements NavigationView.O
                 Intent i = new Intent(MoneyActivity.this, GameActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
+                overridePendingTransition(R.anim.goup, R.anim.godown);
                 break;
             }
 
             case R.id.log_out_item: {
                 logOutAndClearStack();
+                overridePendingTransition(R.anim.goup, R.anim.godown);
                 break;
             }
 

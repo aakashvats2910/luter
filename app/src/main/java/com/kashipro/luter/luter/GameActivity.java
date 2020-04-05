@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
@@ -37,7 +38,6 @@ import java.util.Map;
 
 public class GameActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    private AppBarConfiguration appBarConfiguration;
     private DrawerLayout dashboard_drawer_layout;
     private NavigationView navigationView;
     private ImageView drawer_controller;
@@ -143,6 +143,7 @@ public class GameActivity extends AppCompatActivity implements NavigationView.On
                 Intent i = new Intent(GameActivity.this, AdsActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
+                overridePendingTransition(R.anim.goup, R.anim.godown);
                 break;
             }
 
@@ -150,11 +151,13 @@ public class GameActivity extends AppCompatActivity implements NavigationView.On
                 Intent i = new Intent(GameActivity.this, MoneyActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
+                overridePendingTransition(R.anim.goup, R.anim.godown);
                 break;
             }
 
             case R.id.log_out_item: {
                 logOutAndClearStack();
+                overridePendingTransition(R.anim.goup, R.anim.godown);
                 break;
             }
 
@@ -174,14 +177,6 @@ public class GameActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
         finishAffinity();
-    }
-
-    public static float dpFromPx(final Context context, final float px) {
-        return px / context.getResources().getDisplayMetrics().density;
-    }
-
-    public static float pxFromDp(final Context context, final float dp) {
-        return dp * context.getResources().getDisplayMetrics().density;
     }
 
     public void initializeOptions(String option, final View view) {
@@ -209,5 +204,13 @@ public class GameActivity extends AppCompatActivity implements NavigationView.On
 
     private void stopLoading() {
         loading_game.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        AnimationDrawable animation = (AnimationDrawable) info_about_game.getDrawable();
+        animation.stop();
+        animation.selectDrawable(0);
+        animation.start();
     }
 }

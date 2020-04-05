@@ -89,6 +89,7 @@ public class AdsActivity extends AppCompatActivity implements NavigationView.OnN
                 Intent i = new Intent(AdsActivity.this, GameActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
+                overridePendingTransition(R.anim.goup, R.anim.godown);
                 break;
             }
 
@@ -96,11 +97,13 @@ public class AdsActivity extends AppCompatActivity implements NavigationView.OnN
                 Intent i = new Intent(AdsActivity.this, MoneyActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
+                overridePendingTransition(R.anim.goup, R.anim.godown);
                 break;
             }
 
             case R.id.log_out_item: {
                 logOutAndClearStack();
+                overridePendingTransition(R.anim.goup, R.anim.godown);
                 break;
             }
 

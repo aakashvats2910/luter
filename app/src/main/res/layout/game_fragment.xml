@@ -21,7 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="130dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/question" />
+        android:src="@drawable/ball"/>
 
     <GridLayout
         android:layout_below="@+id/game_header"

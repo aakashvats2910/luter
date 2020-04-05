@@ -73,44 +73,8 @@ public class UpdateDB {
         });
     }
 
-    public static void initializeWallet(final TextView textView) {
-        final String HERE = "WALLET";
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("money").document(FirebaseAuth.getInstance().getUid())
-                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot snapshot = task.getResult();
-                    if (snapshot.exists()) {
-                        if (snapshot.contains(HERE)) {
-                            long clicked = (long) snapshot.get(HERE);
-                            textView.setText("" + clicked + " \u20B9");
-                        } else {
-                            textView.setText("0 \u20B9");
-                        }
-                    }
-                }
-            }
-        });
-    }
 
-    public static void initializeOptions(String option) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("SELECTED_OPTION", option);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("options").document(FirebaseAuth.getInstance().getUid())
-                .set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                System.out.println("()()()() COMPLETE");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                System.out.println("()()()() FAILED");
-            }
-        });
-    }
+
+
 
 }

@@ -16,9 +16,9 @@
 
     <group android:checkableBehavior="none"
         android:id="@+id/menu_bottom">
-        <item
-            android:id="@+id/refferal_code_item"
-            android:title="Refferal Code"/>
+<!--        <item-->
+<!--            android:id="@+id/refferal_code_item"-->
+<!--            android:title="Refferal Code"/>-->
         <item
             android:id="@+id/log_out_item"
             android:title="Log Out"/>

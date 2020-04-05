@@ -14,8 +14,8 @@
 
     <com.mikhaellopez.circularprogressbar.CircularProgressBar
         android:id="@+id/circularProgressBar"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_centerInParent="true"
         app:cpb_background_progressbar_color="#b6bbd8"
         app:cpb_background_progressbar_width="5dp"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="0%"
-        android:textSize="32dp"/>
+        android:textSize="18sp"/>
 
     <LinearLayout
         android:layout_marginTop="160dp"
@@ -53,6 +53,7 @@
 
         <TextView
             android:id="@+id/wallet_field"
+            android:text="0 ₹"
             android:inputType="textPersonName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -77,5 +78,12 @@
         android:textColor="#ffffff"
         android:padding="32dp"
         android:paddingEnd="60dp"/>
+
+    <ImageView
+        android:id="@+id/drawer_controller"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:padding="16sp"
+        android:src="@drawable/newmenu"/>
 
 </RelativeLayout>

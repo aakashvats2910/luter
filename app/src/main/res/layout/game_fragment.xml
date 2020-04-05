@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:background="@drawable/upper_dark"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:textColor="#ffffff"
         android:padding="32dp"/>
 
@@ -46,6 +46,7 @@
                 android:background="@drawable/ad_podcast">
 
                 <ImageView
+                    android:id="@+id/imagea"
                     android:src="@drawable/lettera"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
@@ -81,6 +82,7 @@
                 android:background="@drawable/ad_podcast">
 
                 <ImageView
+                    android:id="@+id/imageb"
                     android:src="@drawable/letterb"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
@@ -116,6 +118,7 @@
                 android:background="@drawable/ad_podcast">
 
                 <ImageView
+                    android:id="@+id/imagec"
                     android:src="@drawable/letterc"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
@@ -135,41 +138,55 @@
 
         </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_rowWeight="1"-->
-<!--            android:layout_columnWeight="1">-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1">
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/option_d"-->
-<!--                android:layout_weight="1"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical"-->
-<!--                android:layout_margin="16dp"-->
-<!--                android:background="@drawable/ad_podcast">-->
+            <LinearLayout
+                android:id="@+id/option_d"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="16dp"
+                android:background="@drawable/ad_podcast">
 
-<!--                <ImageView-->
-<!--                    android:src="@drawable/letterd"-->
-<!--                    android:layout_width="140dp"-->
-<!--                    android:layout_height="140dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:padding="32dp"/>-->
+                <ImageView
+                    android:id="@+id/imaged"
+                    android:src="@drawable/letterd"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_gravity="center"
+                    android:padding="32dp"/>
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:text="Option D"-->
-<!--                    android:layout_marginBottom="8dp"/>-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Option D"
+                    android:layout_marginBottom="8dp"/>
 
-<!--            </LinearLayout>-->
+            </LinearLayout>
 
-<!--        </LinearLayout>-->
+        </LinearLayout>
 
     </GridLayout>
+
+    <ImageView
+        android:id="@+id/drawer_controller"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:padding="16sp"
+        android:src="@drawable/newmenu"/>
+
+    <ProgressBar
+        android:id="@+id/loading_game"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>

@@ -4,42 +4,32 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.kashipro.luter.luter.dashboard_fragments.AdsFragment;
-import com.kashipro.luter.luter.dashboard_fragments.GameFragment;
-import com.kashipro.luter.luter.dashboard_fragments.MoneyFragment;
-import com.kashipro.luter.luter.local.LocalVariables;
-import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
-import java.util.concurrent.TimeUnit;
-
-public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class AdsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private AppBarConfiguration appBarConfiguration;
     private DrawerLayout dashboard_drawer_layout;
     private NavigationView navigationView;
     private ImageView drawer_controller;
     private NavigationView nav_view;
+    private LinearLayout image_ad_button, video_ad_button, banner_ad_button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_ads);
         setNavigationViewListener();
 
         nav_view = findViewById(R.id.nav_view);
@@ -47,7 +37,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         drawer_controller = findViewById(R.id.drawer_controller);
         navigationView = findViewById(R.id.nav_view);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.dashboard_frames_frag, new AdsFragment()).commit();
+        image_ad_button = findViewById(R.id.image_ad_button);
+        video_ad_button = findViewById(R.id.video_ad_button);
+        banner_ad_button = findViewById(R.id.banner_ad_button);
 
         drawer_controller.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +50,28 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         // Selected first item by default
         nav_view.getMenu().getItem(0).setChecked(true);
+
+        // Business logic of the application.
+        video_ad_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdsActivity.this, VideoAdActivity.class));
+            }
+        });
+
+        banner_ad_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdsActivity.this, BannerAdActivity.class));
+            }
+        });
+
+        image_ad_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdsActivity.this, IntersAdActivity.class));
+            }
+        });
 
     }
 
@@ -71,23 +85,23 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
 
-            case R.id.ads_item: {
-                getSupportFragmentManager().beginTransaction().replace(R.id.dashboard_frames_frag, new AdsFragment()).commit();
+            case R.id.game_item: {
+                Intent i = new Intent(AdsActivity.this, GameActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
                 break;
             }
 
             case R.id.money_earned_item: {
-                getSupportFragmentManager().beginTransaction().replace(R.id.dashboard_frames_frag, new MoneyFragment()).commit();
-                break;
-            }
-
-            case R.id.game_item: {
-                getSupportFragmentManager().beginTransaction().replace(R.id.dashboard_frames_frag, new GameFragment()).commit();
+                Intent i = new Intent(AdsActivity.this, MoneyActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
                 break;
             }
 
             case R.id.log_out_item: {
                 logOutAndClearStack();
+                break;
             }
 
         }
@@ -98,7 +112,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     private void logOutAndClearStack() {
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(DashboardActivity.this, MainActivity.class);
+        Intent intent = new Intent(AdsActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

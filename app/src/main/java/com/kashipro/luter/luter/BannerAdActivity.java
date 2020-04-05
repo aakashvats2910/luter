@@ -21,6 +21,7 @@ import com.kashipro.luter.luter.util.UpdateDB;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -31,6 +32,7 @@ public class BannerAdActivity extends AppCompatActivity {
     private AdView mAdView;
     private TextView ads_clicked_banner;
     private ImageView back_banner;
+    private ProgressBar loading_banner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +48,14 @@ public class BannerAdActivity extends AppCompatActivity {
         back_banner = findViewById(R.id.back_banner);
         ads_clicked_banner = findViewById(R.id.ads_clicked_banner);
         mAdView = findViewById(R.id.adView);
+        loading_banner = findViewById(R.id.loading_banner);
+
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        UpdateDB.initializeClicksFromDB("BANNER_CLICK", ads_clicked_banner);
+        startLoading();
+
+        UpdateDB.initializeClicksFromDB("BANNER_CLICK", ads_clicked_banner, loading_banner);
 
         back_banner.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,5 +100,10 @@ public class BannerAdActivity extends AppCompatActivity {
                 // to the app after tapping on an ad.
             }
         });
+
+    }
+
+    private void startLoading() {
+        loading_banner.setVisibility(View.VISIBLE);
     }
 }

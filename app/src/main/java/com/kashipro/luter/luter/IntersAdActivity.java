@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdListener;
@@ -32,6 +33,7 @@ public class IntersAdActivity extends AppCompatActivity {
     private TextView ads_clicked_inters;
     private TextView ads_viewed_inters;
     private ImageView back_inters;
+    private ProgressBar loading_inters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,9 @@ public class IntersAdActivity extends AppCompatActivity {
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         info_view = findViewById(R.id.info_view_inters);
         back_inters = findViewById(R.id.back_inters);
+        loading_inters = findViewById(R.id.loading_inters);
+
+        loading_inters.setVisibility(View.VISIBLE);
 
         back_inters.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,8 +73,8 @@ public class IntersAdActivity extends AppCompatActivity {
             }
         });
 
-        UpdateDB.initializeClicksFromDB("INTERS_CLICK", ads_clicked_inters);
-        UpdateDB.initializeClicksFromDB("INTERS_VIEW", ads_viewed_inters);
+        UpdateDB.initializeClicksFromDB("INTERS_CLICK", ads_clicked_inters, loading_inters);
+        UpdateDB.initializeClicksFromDB("INTERS_VIEW", ads_viewed_inters, loading_inters);
 
         mInterstitialAd.setAdListener(new AdListener() {
             @Override

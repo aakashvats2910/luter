@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class VideoAdActivity extends AppCompatActivity {
     private TextView ads_viewed_video;
     private TextView ads_clicked_video;
     private ImageView back_video;
+    private ProgressBar loading_video;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class VideoAdActivity extends AppCompatActivity {
         ads_clicked_video = findViewById(R.id.ads_clicked_video);
         ads_viewed_video = findViewById(R.id.ads_viewed_video);
         back_video = findViewById(R.id.back_video);
+        loading_video = findViewById(R.id.loading_video);
 
         back_video.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +64,8 @@ public class VideoAdActivity extends AppCompatActivity {
             }
         });
 
-        UpdateDB.initializeClicksFromDB("VIDEO_CLICK", ads_clicked_video);
-        UpdateDB.initializeClicksFromDB("VIDEO_VIEW", ads_viewed_video);
+        UpdateDB.initializeClicksFromDB("VIDEO_CLICK", ads_clicked_video, loading_video);
+        UpdateDB.initializeClicksFromDB("VIDEO_VIEW", ads_viewed_video, loading_video);
 
         info_view.setText("\u24d8 If button is disabled, try after some time!");
 

@@ -1,5 +1,7 @@
 package com.kashipro.luter.luter.util;
 
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +53,7 @@ public class UpdateDB {
         });
     }
 
-    public static void initializeClicksFromDB(String here, final TextView textView) {
+    public static void initializeClicksFromDB(String here, final TextView textView, final ProgressBar progressBar) {
         final String HERE = here;
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("userdata").document(FirebaseAuth.getInstance().getUid())
@@ -64,8 +66,10 @@ public class UpdateDB {
                         if (snapshot.contains(HERE)) {
                             long clicked = (long) snapshot.get(HERE);
                             textView.setText("" + clicked);
+                            progressBar.setVisibility(View.GONE);
                         } else {
                             textView.setText("0");
+                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 }

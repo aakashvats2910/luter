@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.firebase.ui.auth.IdpResponse;
-
 public class LocalVariables {
 
     public static void setDefaults(String key, String value, Context context) {

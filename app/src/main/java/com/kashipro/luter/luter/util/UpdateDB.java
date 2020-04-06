@@ -1,5 +1,6 @@
 package com.kashipro.luter.luter.util;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -21,6 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UpdateDB {
+
+    private static Context context;
 
     public static void updateDB(String here, final TextView textView) {
         final String HERE = here;
@@ -77,8 +80,11 @@ public class UpdateDB {
         });
     }
 
+    public static void setContext(Context context) {
+        UpdateDB.context = context;
+    }
 
-
-
-
+    public static Context getContext() {
+        return context;
+    }
 }

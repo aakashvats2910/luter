@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Luter</string>
-    <string name="first_instruction">We provide a gateway to our user of creating money without any investment</string>
-    <string name="second_instruction">It\'s simple!\nCollect rewards by watching advertisements and take part in everyday contest!</string>
-    <string name="third_instruction">If you win you get real money! For REAL!</string>
+    <string name="first_instruction">We provide a gateway to our user of creating money without any real money donation!</string>
+    <string name="second_instruction">It\'s simple!\nBy watching advertisements. Yes! the more you watch ads then more money we will collect for donation!</string>
+    <string name="third_instruction">Watching and clicking ads just 5 times a day can help others! So, remember watching ads daily!</string>
 </resources>

@@ -3,6 +3,7 @@ package com.kashipro.luter.luter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -73,7 +74,11 @@ public class InstructionsActivity extends AppCompatActivity {
                     // TODO start next activity!
                 }
 
-                getSupportFragmentManager().beginTransaction().replace(R.id.instructions_frame, selectedFragment).commit();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+                transaction.replace(R.id.instructions_frame, selectedFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
@@ -97,7 +102,11 @@ public class InstructionsActivity extends AppCompatActivity {
                         finishAffinity();
                 }
 
-                getSupportFragmentManager().beginTransaction().replace(R.id.instructions_frame, selectedFragment).commit();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
+                transaction.replace(R.id.instructions_frame, selectedFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
@@ -134,5 +143,10 @@ public class InstructionsActivity extends AppCompatActivity {
         Intent intent = new Intent(InstructionsActivity.this, AdsActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
     }
 }

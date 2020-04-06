@@ -4,46 +4,49 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.ui.AppBarConfiguration;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.kashipro.luter.luter.util.UpdateDB;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
-public class AdsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class HowWeWorkActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    private AppBarConfiguration appBarConfiguration;
     private DrawerLayout dashboard_drawer_layout;
-    private NavigationView navigationView;
     private ImageView drawer_controller;
     private NavigationView nav_view;
-    private LinearLayout image_ad_button, video_ad_button, banner_ad_button;
-
+    private TextView text_1;
+    private ImageView twitter_button, instagram_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ads);
+        setContentView(R.layout.activity_how_we_work);
         setNavigationViewListener();
-
-        // Set the context for the UpdateDB.
-        UpdateDB.setContext(getApplicationContext());
 
         nav_view = findViewById(R.id.nav_view);
         dashboard_drawer_layout = findViewById(R.id.dashboard_drawer_layout);
         drawer_controller = findViewById(R.id.drawer_controller);
-        navigationView = findViewById(R.id.nav_view);
+        text_1 = findViewById(R.id.text_1);
 
-        image_ad_button = findViewById(R.id.image_ad_button);
-        video_ad_button = findViewById(R.id.video_ad_button);
-        banner_ad_button = findViewById(R.id.banner_ad_button);
+        twitter_button = findViewById(R.id.twitter_button);
+        instagram_button = findViewById(R.id.instagram_button);
+
+        // As per now instagram is hidden!
+        instagram_button.setVisibility(View.GONE);
 
         drawer_controller.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,30 +56,40 @@ public class AdsActivity extends AppCompatActivity implements NavigationView.OnN
         });
 
         // Selected first item by default
-        nav_view.getMenu().getItem(0).setChecked(true);
+        nav_view.getMenu().getItem(2).setChecked(true);
 
-        // Business logic of the application.
-        video_ad_button.setOnClickListener(new View.OnClickListener() {
+        // Business Logic.
+        text_1.setText(Html.fromHtml("Yeah! Its a simple idea developed to help <b>Poor</b> & <b>Needy</b> around us."));
+
+
+        // TODO linking to twitter and instagram left.
+        twitter_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdsActivity.this, VideoAdActivity.class));
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=" + "Luter03362017")));
+                }catch (Exception e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/#!/" + "Luter03362017")));
+                }
             }
         });
 
-        banner_ad_button.setOnClickListener(new View.OnClickListener() {
+        instagram_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdsActivity.this, BannerAdActivity.class));
+                Uri uri = Uri.parse("http://instagram.com/_u/aakashvats2910");
+                Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+
+                likeIng.setPackage("com.instagram.android");
+
+                try {
+                    startActivity(likeIng);
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://instagram.com/aakashvats2910")));
+                }
             }
         });
-
-        image_ad_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AdsActivity.this, IntersAdActivity.class));
-            }
-        });
-
     }
 
     private void setNavigationViewListener() {
@@ -89,16 +102,16 @@ public class AdsActivity extends AppCompatActivity implements NavigationView.OnN
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
 
-            case R.id.money_earned_item: {
-                Intent i = new Intent(AdsActivity.this, MoneyActivity.class);
+            case R.id.ads_item: {
+                Intent i = new Intent(HowWeWorkActivity.this, AdsActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
                 overridePendingTransition(R.anim.goup, R.anim.godown);
                 break;
             }
 
-            case R.id.work_item: {
-                Intent i = new Intent(AdsActivity.this, HowWeWorkActivity.class);
+            case R.id.money_earned_item: {
+                Intent i = new Intent(HowWeWorkActivity.this, MoneyActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
                 overridePendingTransition(R.anim.goup, R.anim.godown);
@@ -119,7 +132,7 @@ public class AdsActivity extends AppCompatActivity implements NavigationView.OnN
 
     private void logOutAndClearStack() {
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(AdsActivity.this, MainActivity.class);
+        Intent intent = new Intent(HowWeWorkActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

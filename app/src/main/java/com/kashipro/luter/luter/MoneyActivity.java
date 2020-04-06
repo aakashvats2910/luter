@@ -9,19 +9,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.kashipro.luter.luter.util.UpdateDB;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
-
-import java.util.concurrent.TimeUnit;
 
 public class MoneyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -59,8 +61,15 @@ public class MoneyActivity extends AppCompatActivity implements NavigationView.O
         circularProgressBar = findViewById(R.id.circularProgressBar);
         money_percentage = findViewById(R.id.money_percentage);
 
-        circularProgressBar.setProgressMax(200);
+        circularProgressBar.setProgressMax(100);
         circularProgressBar.setIndeterminateMode(true);
+
+        circularProgressBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v, "We need to reach 100$ before we can withdraw! So, keep up with us!", 3000).show();
+            }
+        });
 
         initializeWallet(wallet_field);
     }
@@ -82,14 +91,14 @@ public class MoneyActivity extends AppCompatActivity implements NavigationView.O
                 overridePendingTransition(R.anim.goup, R.anim.godown);
                 break;
             }
-
-            case R.id.game_item: {
-                Intent i = new Intent(MoneyActivity.this, GameActivity.class);
+            case R.id.work_item: {
+                Intent i = new Intent(MoneyActivity.this, HowWeWorkActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
                 overridePendingTransition(R.anim.goup, R.anim.godown);
                 break;
             }
+
 
             case R.id.log_out_item: {
                 logOutAndClearStack();
@@ -118,7 +127,7 @@ public class MoneyActivity extends AppCompatActivity implements NavigationView.O
     public void initializeWallet(final TextView textView) {
         final String HERE = "WALLET";
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("money").document(FirebaseAuth.getInstance().getUid())
+        db.collection("money").document("money_")
                 .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -127,10 +136,11 @@ public class MoneyActivity extends AppCompatActivity implements NavigationView.O
                     if (snapshot.exists()) {
                         if (snapshot.contains(HERE)) {
                             long money = (long) snapshot.get(HERE);
+                            long percentage = (long) snapshot.get("PERCENTAGE");
                             textView.setText("" + money + " \u20B9");
                             circularProgressBar.setIndeterminateMode(false);
-                            circularProgressBar.setProgressWithAnimation(money, 1000L);
-                            money_percentage.setText("" + (money/2));
+                            circularProgressBar.setProgressWithAnimation(percentage, 1000L);
+                            money_percentage.setText("" + percentage + "%");
                         } else {
                             textView.setText("0 \u20B9");
                             circularProgressBar.setIndeterminateMode(false);

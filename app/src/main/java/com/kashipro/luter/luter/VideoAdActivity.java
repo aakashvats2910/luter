@@ -119,7 +119,7 @@ public class VideoAdActivity extends AppCompatActivity {
     }
 
     private void loadRewardedVideoAd() {
-        mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
+        mRewardedVideoAd.loadAd("ca-app-pub-7862696162151523/7956688247",
                 new AdRequest.Builder().build());
     }
 }

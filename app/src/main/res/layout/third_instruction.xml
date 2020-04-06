@@ -9,7 +9,6 @@
         android:textSize="32sp"
         android:textColor="#ffffff"
         android:gravity="center"
-        android:text="Play Game Now!"
         android:layout_width="match_parent"
         android:layout_height="360dp"
         android:background="@drawable/upper_three"/>
@@ -20,12 +19,12 @@
         android:layout_height="260dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="65dp"
-        android:layout_marginRight="93dp"
+        
         android:layout_marginBottom="16dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/podium" />
+        android:src="@drawable/together" />
 
     <View
         android:layout_width="match_parent"
@@ -43,9 +42,24 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="#000000"
-        android:textSize="32sp"
+        android:textSize="28sp"
         android:layout_below="@id/podium_img"
-        android:text="It's 100% Real" />
+        android:text="Help the needy together!" />
+
+    <TextView
+        android:id="@+id/temp4"
+        android:layout_width="match_parent"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="0dp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="32sp"
+        android:layout_below="@id/temp3"
+        android:text="Remember!" />
 
     <TextView
         android:layout_width="match_parent"
@@ -56,7 +70,7 @@
         android:gravity="center"
         android:textColor="#000000"
         android:textSize="18sp"
-        android:layout_below="@id/temp3"
+        android:layout_below="@id/temp4"
         android:text="@string/third_instruction"/>
 
 </RelativeLayout>

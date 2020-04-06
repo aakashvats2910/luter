@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if (FirebaseAuth.getInstance().getUid() != null) {
-            startActivity(new Intent(MainActivity.this, AdsActivity.class));
+            startActivity(new Intent(MainActivity.this, AdsActivity
+                    .class));
         }
 
         start_button.setOnClickListener(new View.OnClickListener() {

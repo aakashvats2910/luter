@@ -7,11 +7,11 @@
             android:id="@+id/ads_item"
             android:title="Ads"/>
         <item
-            android:id="@+id/money_earned_item"
-            android:title="Money Earned"/>
+        android:id="@+id/money_earned_item"
+        android:title="Total Donation"/>
         <item
-            android:id="@+id/game_item"
-            android:title="Play Game"/>
+            android:id="@+id/work_item"
+            android:title="How we work?"/>
     </group>
 
     <group android:checkableBehavior="none"

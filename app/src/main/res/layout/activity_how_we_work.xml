@@ -9,7 +9,7 @@
     tools:openDrawer="start">
 
     <include
-        layout="@layout/game_fragment"
+        layout="@layout/work_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

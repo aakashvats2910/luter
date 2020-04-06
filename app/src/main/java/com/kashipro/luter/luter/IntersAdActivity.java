@@ -44,7 +44,7 @@ public class IntersAdActivity extends AppCompatActivity {
         ads_clicked_inters = findViewById(R.id.ads_clicked_inters);
         ads_viewed_inters = findViewById(R.id.ads_viewed_inters);
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-7862696162151523/2761036030");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         info_view = findViewById(R.id.info_view_inters);
         back_inters = findViewById(R.id.back_inters);

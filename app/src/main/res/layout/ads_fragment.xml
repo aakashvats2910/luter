@@ -13,15 +13,16 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:background="@drawable/upper_dark"
-            android:text="Watch your ads here!"
+            android:text="Do moneyless donation here just by watching ads :)\n Happy donating"
             android:gravity="end"
             android:textSize="22sp"
             android:textColor="#ffffff"
-            android:paddingTop="32dp"
-            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingStart="64dp"
             android:paddingEnd="16dp"/>
 
         <GridLayout
+            android:id="@+id/grids"
             android:layout_below="@+id/header"
             android:layout_marginTop="32dp"
             android:layout_width="match_parent"
@@ -29,7 +30,7 @@
             android:columnCount="2">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="0dp" android:baselineAligned="false" 
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1">
@@ -64,7 +65,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="0dp" android:baselineAligned="false" 
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1">
@@ -99,7 +100,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="0dp" android:baselineAligned="false" 
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1">
